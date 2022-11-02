@@ -23,7 +23,7 @@
 			],
 			"transformations": [
 				{
-					"name": "select1"
+					"name": "select11"
 				},
 				{
 					"name": "derivedColumn1"
@@ -62,8 +62,8 @@
 				"          State = Column_10",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 derive({ Revenue_1} = toDecimal(replace(concat(toString(RevenuePart1), toString({ Revenue})), '\\\\', ''), 10, 2, '$###,###.##'),",
+				"     skipDuplicateMapOutputs: true) ~> select11",
+				"select11 derive({ Revenue_1} = toDecimal(replace(concat(toString(RevenuePart1), toString({ Revenue})), '\\\\', ''), 10, 2, '$###,###.##'),",
 				"          RevenueTarget_1 = toDecimal(replace(concat(toString(RevenueTargetPart1), toString(RevenueTarget)), '\\\\', ''), 10, 2, '$###,###.##')) ~> derivedColumn1",
 				"derivedColumn1 select(mapColumn(",
 				"          Region,",
