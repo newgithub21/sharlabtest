@@ -23,7 +23,7 @@
 			],
 			"transformations": [
 				{
-					"name": "select1"
+					"name": "select11"
 				},
 				{
 					"name": "derivedColumn1"
@@ -38,17 +38,17 @@
 				"          Column_2 as string,",
 				"          Column_3 as string,",
 				"          Column_4 as string,",
-				"          Column_5 as double,",
-				"          Column_6 as string,",
-				"          Column_7 as double,",
-				"          Column_8 as string,",
+				"          Column_5 as string,",
+				"          Column_6 as double,",
+				"          Column_7 as string,",
+				"          Column_8 as double,",
 				"          Column_9 as string,",
 				"          Column_10 as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     skipLines: 2) ~> sourcecsv",
+				"     skipLines: 1) ~> sourcecsv",
 				"sourcecsv select(mapColumn(",
 				"          Region = Column_1,",
 				"          Country = Column_2,",
@@ -62,8 +62,8 @@
 				"          State = Column_10",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 derive({ Revenue_1} = toDecimal(replace(concat(toString(RevenuePart1), toString({ Revenue})), '\\\\', ''), 10, 2, '$###,###.##'),",
+				"     skipDuplicateMapOutputs: true) ~> select11",
+				"select11 derive({ Revenue_1} = toDecimal(replace(concat(toString(RevenuePart1), toString({ Revenue})), '\\\\', ''), 10, 2, '$###,###.##'),",
 				"          RevenueTarget_1 = toDecimal(replace(concat(toString(RevenueTargetPart1), toString(RevenueTarget)), '\\\\', ''), 10, 2, '$###,###.##')) ~> derivedColumn1",
 				"derivedColumn1 select(mapColumn(",
 				"          Region,",
@@ -96,7 +96,17 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sinkdb"
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Region,",
+				"          Country,",
+				"          ProductCategory,",
+				"          CampaignName,",
+				"          Revenue = { Revenue},",
+				"          RevenueTarget,",
+				"          City,",
+				"          State",
+				"     )) ~> sinkdb"
 			]
 		}
 	}
