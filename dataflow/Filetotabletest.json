@@ -48,7 +48,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     skipLines: 2) ~> sourcecsv",
+				"     skipLines: 1) ~> sourcecsv",
 				"sourcecsv select(mapColumn(",
 				"          Region = Column_1,",
 				"          Country = Column_2,",
