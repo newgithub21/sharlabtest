@@ -1,0 +1,9 @@
+{
+	"name": "Sharlabtest",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "9e17cf5d-c3e6-44e7-9ec6-a1d8f99d6e15",
+		"tenantId": "ce485962-a55d-4f78-ac7e-fbc5428e4b18"
+	}
+}
